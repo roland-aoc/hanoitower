@@ -1,6 +1,6 @@
 rm -rf build &&
 mkdir build &&
 cd build &&
-cmake -G "Unix Makefiles" ../buildconf/all &&
+cmake -G Ninja ../buildconf/all &&
 cd .. &&
 cmake --build build

@@ -20,6 +20,9 @@ int Game::playWithScore(string name, unsigned int difficulty) {
 
     setUp(difficulty);
     spdlog::get("logger")->info("Game started with Player: {}", name);
+    bool success;
+
+    success = board.moveFromFirstRod('2');
     return score;
 }
 
