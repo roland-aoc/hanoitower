@@ -82,11 +82,15 @@ target_link_libraries(main PRIVATE spdlog::spdlog) # ${numeric_INCLUDE_DIRS}
 # most of the times any compiling error "undefined reference" is due to missing files in scope by cmake, *.h approach will mostly only read one file
 file(GLOB IMPL_FILES
      "${CMAKE_SOURCE_DIR}/game/game.cpp"
+     "${CMAKE_SOURCE_DIR}/game/board.cpp"
+     "${CMAKE_SOURCE_DIR}/game/disk.cpp"
      "${CMAKE_SOURCE_DIR}/config.cpp"
 )
 
 file(GLOB HDRS_FILES
      "${CMAKE_SOURCE_DIR}/game/game.h"
+     "${CMAKE_SOURCE_DIR}/game/board.h"
+     "${CMAKE_SOURCE_DIR}/game/disk.h"
      "${CMAKE_SOURCE_DIR}/config.h"
 )
 
