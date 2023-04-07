@@ -38,7 +38,7 @@ TEST_F(GameTest, TooDifficult) {
 }
 
 TEST_F(GameTest, MovesCorrect) {
-    game->setUp(8);
+    board->startingPos(8);
     ASSERT_TRUE(board->moveFromFirstRod('2'));
     ASSERT_FALSE(board->moveFromFirstRod('1'));
     ASSERT_FALSE(board->moveFromSecondRod('2'));

@@ -15,18 +15,26 @@ void Board::startingPos(int difficulty) {
 }
 
 bool Board::moveFromFirstRod(char target) {
-    if (rod1.empty()) return false;
-    if ('1' == target) return false;
+    if (rod1.empty()) {
+        return false;
+    }
+    if ('1' == target) {
+        return false;
+    }
     if ('2' == target) {
         if (!rod2.empty()) {
-            if (rod1.top()->getSize() > rod2.top()->getSize()) return false;
+            if (rod1.top()->getSize() > rod2.top()->getSize()) {
+                return false;
+            }
         }
         rod2.push(rod1.top());
         rod1.pop();
     }
     if ('3' == target) {
         if (!rod3.empty()) {
-            if (rod1.top()->getSize() > rod3.top()->getSize()) return false;
+            if (rod1.top()->getSize() > rod3.top()->getSize()) {
+                return false;
+            }
         }
         rod3.push(rod1.top());
         rod1.pop();
@@ -35,18 +43,26 @@ bool Board::moveFromFirstRod(char target) {
 }
 
 bool Board::moveFromSecondRod(char target) {
-    if (rod2.empty()) return false;
+    if (rod2.empty()) {
+        return false;
+    }
     if ('1' == target) {
         if (!rod1.empty()) {
-            if (rod2.top()->getSize() > rod1.top()->getSize()) return false;
+            if (rod2.top()->getSize() > rod1.top()->getSize()) {
+                return false;
+            }
         }
         rod1.push(rod2.top());
         rod2.pop();
     }
-    if ('2' == target) return false;
+    if ('2' == target) {
+        return false;
+    }
     if ('3' == target) {
         if (!rod3.empty()) {
-            if (rod2.top()->getSize() > rod3.top()->getSize()) return false;
+            if (rod2.top()->getSize() > rod3.top()->getSize()) {
+                return false;
+            }
         }
         rod3.push(rod2.top());
         rod2.pop();
@@ -55,21 +71,29 @@ bool Board::moveFromSecondRod(char target) {
 }
 
 bool Board::moveFromThirdRod(char target) {
-    if (rod3.empty()) return false;
+    if (rod3.empty()) {
+        return false;
+    }
     if ('1' == target) {
         if (!rod1.empty()) {
-            if (rod3.top()->getSize() > rod1.top()->getSize()) return false;
+            if (rod3.top()->getSize() > rod1.top()->getSize()) {
+                return false;
+            }
         }
         rod1.push(rod3.top());
         rod3.pop();
     }
     if ('2' == target) {
         if (!rod3.empty()) {
-            if (rod3.top()->getSize() > rod2.top()->getSize()) return false;
+            if (rod3.top()->getSize() > rod2.top()->getSize()) {
+                return false;
+            }
         }
         rod2.push(rod3.top());
         rod3.pop();
     }
-    if ('3' == target) return false;
+    if ('3' == target) {
+        return false;
+    }
     return true;
 }
