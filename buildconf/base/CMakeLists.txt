@@ -23,8 +23,8 @@ add_link_options()
 # install(FILES $<TARGET_PDB_FILE:${PROJECT_NAME}> DESTINATION build OPTIONAL)
 
 add_compile_options(-g)
-add_compile_options(-pipe)
+add_compile_options(-pipe) # This flag enables the use of pipes between the compiler stages, which can reduce the amount of disk I/O required during the build process and speed up the compilation time.
 set(CMAKE_CXX_FLAGS "-g")
 set(CMAKE_CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "-Wpedantic")
-set(CMAKE_BUILD_PARALLEL_LEVEL 4)
+set(CMAKE_BUILD_PARALLEL_LEVEL 4) # This flag tells the build system to use X number of threads for the compilation process. This can greatly reduce the build time on multi-core systems.

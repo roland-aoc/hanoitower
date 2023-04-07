@@ -1,18 +1,21 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <stack>
+#include <vector>
+#include <string>
 
 #include "disk.h"
 
-using std::stack;
+using std::vector;
+using std::string;
 
 class Board
 {
-stack<Disk*> rod1; 
-stack<Disk*> rod2; 
-stack<Disk*> rod3;
-int startStackSize;
+vector<Disk*> rod1; 
+vector<Disk*> rod2; 
+vector<Disk*> rod3;
+int startSize;
+string status;
 
 public:
     Board(/* args */);
@@ -22,6 +25,7 @@ public:
     bool moveFromSecondRod(char);
     bool moveFromThirdRod(char);
     bool hasWon();
+    string& getStatus();
 };
 
 
