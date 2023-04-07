@@ -23,6 +23,8 @@ add_link_options()
 # install(FILES $<TARGET_PDB_FILE:${PROJECT_NAME}> DESTINATION build OPTIONAL)
 
 add_compile_options(-g)
+add_compile_options(-pipe)
 set(CMAKE_CXX_FLAGS "-g")
 set(CMAKE_CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "-Wpedantic")
+set(CMAKE_BUILD_PARALLEL_LEVEL 4)
