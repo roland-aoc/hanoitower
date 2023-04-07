@@ -2,6 +2,8 @@
 #include <string>
 
 #include "../game/game.h"
+#include "../game/util.h"
+#include "../game/util.cpp"
 #include "../config.h"
 
 #include <spdlog/spdlog.h>
@@ -21,7 +23,7 @@ protected:
     }
 
     void SetUp() override {
-        game = new Game;
+        game = new Game(2);
         board = new Board;
     }
 
@@ -43,4 +45,13 @@ TEST_F(GameTest, MovesCorrect) {
     ASSERT_FALSE(board->moveFromFirstRod('1'));
     ASSERT_FALSE(board->moveFromSecondRod('2'));
     ASSERT_FALSE(board->moveFromThirdRod('3'));
+}
+
+TEST_F(GameTest, TimeIsUp) {
+    int startMillis = 1;
+    int maxMins = 5;
+    int advancedMins = maxMins++;
+    game = new Game(maxMins, new UtilMock(startMillis, advancedMins * 60 * 10000));
+    game->setUp(8);
+    ASSERT_TRUE(game->timeIsUp());
 }

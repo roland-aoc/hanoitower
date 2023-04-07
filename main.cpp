@@ -16,7 +16,7 @@ int main(int, char**) {
     config::LogManager::init();
     spdlog::get("logger")->info("Logger initialized with args {} {}", 1, 2);
 
-    Game game;
+    Game game(0.5); //30 secs
     game.playWithScore("me", 10);
 
     return 0;

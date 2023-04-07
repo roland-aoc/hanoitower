@@ -12,6 +12,7 @@ class Board
 stack<Disk*> rod1; 
 stack<Disk*> rod2; 
 stack<Disk*> rod3;
+int startStackSize;
 
 public:
     Board(/* args */);
@@ -20,6 +21,7 @@ public:
     bool moveFromFirstRod(char);
     bool moveFromSecondRod(char);
     bool moveFromThirdRod(char);
+    bool hasWon();
 };
 
 

@@ -9,6 +9,7 @@ Board::~Board()
 }
 
 void Board::startingPos(int difficulty) {
+    startStackSize = difficulty;
     for (int i = 0; i < difficulty; i++) {
         rod1.push(new Disk(i));
     }
@@ -96,4 +97,11 @@ bool Board::moveFromThirdRod(char target) {
         return false;
     }
     return true;
+}
+
+bool Board::hasWon() {
+    if (rod3.size() == startStackSize) {
+        return true;
+    }
+    return false;
 }

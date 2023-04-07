@@ -4,18 +4,25 @@
 #include <string>
 
 #include "board.h"
+#include "util.h"
 
 using std::string;
 
 class Game
 {
-Board board;
+    Board board;
+    milliseconds startTimeMillis;
+    Utilizable* util;
+    int maxMinutesPlayTime;
+    
 
 public:
-    Game(/* args */);
+    void setUp(int);
+    Game(int, Utilizable*);
+    Game(int);
     ~Game();
     int playWithScore(string, unsigned int);
-    void setUp(int);
+    bool timeIsUp();
 };
 
 #endif
