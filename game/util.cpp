@@ -22,9 +22,9 @@ public:
         return duration_cast<milliseconds> (system_clock::now().time_since_epoch());
     }
 
-    char randomTarget() override {
-        char choices[] = {'1', '2', '3'};
-        char random_choice = choices[dis(gen)];
+    int randomTarget() override {
+        int choices[] = {1,2,3};
+        int random_choice = choices[dis(gen)];
         return random_choice;
     }
 };
@@ -48,6 +48,10 @@ public:
         if (callFrequency == 1) return milliseconds(firstMillis);
         if (callFrequency == 2) return milliseconds(advancedMins);
         return milliseconds(0);
+    }
+    
+    int randomTarget() override {
+        return 1;
     }
 };
 

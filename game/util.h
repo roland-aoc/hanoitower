@@ -12,7 +12,7 @@ class Utilizable
 public:
     virtual ~Utilizable() {};
     virtual milliseconds logTime() = 0;
-    virtual char randomTarget() = 0;
+    virtual int randomTarget() = 0;
 };
 
 #endif

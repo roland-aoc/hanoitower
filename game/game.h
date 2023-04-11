@@ -19,7 +19,7 @@ class Game
     vector<int> movesTo;
     vector<int> movesDiskSize;
     void recordMove(int, int, int);
-    void calculateMove(int&, int&, int&);
+    void calculateMove(int, int, int);
 
 public:
     void setUp(int);

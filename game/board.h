@@ -21,9 +21,9 @@ public:
     Board(/* args */);
     ~Board();
     void startingPos(int);
-    bool moveFromFirstRod(char);
-    bool moveFromSecondRod(char);
-    bool moveFromThirdRod(char);
+    bool moveFromFirstRod(int);
+    bool moveFromSecondRod(int);
+    bool moveFromThirdRod(int);
     bool hasWon();
     string& getStatus();
 };

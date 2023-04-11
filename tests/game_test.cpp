@@ -32,7 +32,7 @@ protected:
 };
 
 TEST_F(GameTest, Play) {
-    ASSERT_EQ(0, game->playWithScore("me", 10));
+    ASSERT_EQ(7, game->playWithScore("me", 3));
 }
 
 TEST_F(GameTest, TooDifficult) {
@@ -41,10 +41,10 @@ TEST_F(GameTest, TooDifficult) {
 
 TEST_F(GameTest, MovesCorrect) {
     board->startingPos(8);
-    ASSERT_TRUE(board->moveFromFirstRod('2'));
-    ASSERT_FALSE(board->moveFromFirstRod('1'));
-    ASSERT_FALSE(board->moveFromSecondRod('2'));
-    ASSERT_FALSE(board->moveFromThirdRod('3'));
+    ASSERT_TRUE(board->moveFromFirstRod(2));
+    ASSERT_FALSE(board->moveFromFirstRod(1));
+    ASSERT_FALSE(board->moveFromSecondRod(2));
+    ASSERT_FALSE(board->moveFromThirdRod(3));
 }
 
 TEST_F(GameTest, TimeIsUp) {

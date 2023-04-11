@@ -14,14 +14,14 @@ Board::~Board()
 {
 }
 
-void Board::startingPos(int difficulty) {
-    startSize = difficulty;
-    for (int i = 0; i < difficulty; i++) {
+void Board::startingPos(int nDisks) {
+    startSize = nDisks;
+    for (int i = 0; i < nDisks; i++) {
         rod1.push_back(new Disk(i));
     }
 }
 
-bool Board::moveFromFirstRod(char target) {
+bool Board::moveFromFirstRod(int target) {
     if (rod1.empty()) {
         return false;
     }
@@ -49,7 +49,7 @@ bool Board::moveFromFirstRod(char target) {
     return true;
 }
 
-bool Board::moveFromSecondRod(char target) {
+bool Board::moveFromSecondRod(int target) {
     if (rod2.empty()) {
         return false;
     }
@@ -77,7 +77,7 @@ bool Board::moveFromSecondRod(char target) {
     return true;
 }
 
-bool Board::moveFromThirdRod(char target) {
+bool Board::moveFromThirdRod(int target) {
     if (rod3.empty()) {
         return false;
     }
