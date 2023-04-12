@@ -17,7 +17,7 @@ int main(int, char**) {
     spdlog::get("logger")->info("Logger initialized with args {} {}", 1, 2);
 
     Game game(1); //30 secs
-    game.playWithScore("me", 10);
+    game.playWithScore("me", 3);
 
     return 0;
 }

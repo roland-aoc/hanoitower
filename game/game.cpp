@@ -6,14 +6,16 @@
 
 using std::invalid_argument;
 
-Game::Game(int maxMinutesPlayTime, Utilizable* util) 
-    : maxMinutesPlayTime(maxMinutesPlayTime),
+Game::Game(Board* board, int maxMinutesPlayTime, Utilizable* util) 
+    : board(board),
+    maxMinutesPlayTime(maxMinutesPlayTime),
     util(util)
 {
 }
 
-Game::Game(int maxMinutesPlayTime) 
-    : maxMinutesPlayTime(maxMinutesPlayTime),
+Game::Game(int maxMinutesPlayTime)
+    : board(new Board),
+    maxMinutesPlayTime(maxMinutesPlayTime),
     util(new Util)
 {
 }
@@ -21,10 +23,6 @@ Game::Game(int maxMinutesPlayTime)
 Game::~Game()
 {
 }
-
-// rod1 4321
-// rod2
-// rod3
 
 int Game::playWithScore(string name, unsigned int nDisks) {
     if (nDisks >10) {
@@ -35,13 +33,20 @@ int Game::playWithScore(string name, unsigned int nDisks) {
     setUp(nDisks);
     spdlog::get("logger")->info("Game started with Player: {}", name);
     
-    int from, to, diskSize;
-    
-    // while (!board.hasWon()) { // && !timeIsUp() //TODO RK implement
-    //     // spdlog::get("logger")->info("Current status\n{}", board.getStatus());
-    //     calculateMove(from, to, diskSize);
-    //     recordMove(from, to, diskSize);
-    // }
+    int left = 0, mid = 1, right = 2;
+    int totalMoves = (1 << nDisks) - 1;
+    if (nDisks % 2 == 0) {
+        swap(mid, right);
+    }
+    for (int i = 1; i <= totalMoves; i++) {
+        if (i % 3 == 0)
+            board->move(mid, right);
+        else if (i % 3 == 1)
+            board->move(left, right);
+        else
+            board->move(left, mid);
+        nMoves++;
+    }
 
     if (timeIsUp()) {
         spdlog::get("logger")->info("Player {} won with score {}", name, nMoves);
@@ -53,7 +58,7 @@ int Game::playWithScore(string name, unsigned int nDisks) {
 
 void Game::setUp(int nDisks) {
     startTimeMillis = util->logTime();
-    board.startingPos(nDisks);
+    for (int i = nDisks; i > 0; i--) board->getRods()[0].push(i);
 }
 
 bool Game::timeIsUp() {
@@ -65,13 +70,4 @@ void Game::recordMove(int from, int to, int diskSize) {
     movesFrom.push_back(from);
     movesTo.push_back(to);
     movesDiskSize.push_back(diskSize);
-}
-
-void Game::calculateMove(int from, int to, int diskSize) {
-    bool goodMove = true;
-    if (goodMove) {
-        from = util->randomTarget();
-        to = util->randomTarget();
-        // diskSize = get from vector
-    }
 }

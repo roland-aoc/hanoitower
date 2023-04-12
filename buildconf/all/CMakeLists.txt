@@ -84,7 +84,6 @@ target_link_libraries(
 file(GLOB IMPL_FILES
      "${CMAKE_SOURCE_DIR}/game/game.cpp"
      "${CMAKE_SOURCE_DIR}/game/board.cpp"
-     "${CMAKE_SOURCE_DIR}/game/disk.cpp"
      "${CMAKE_SOURCE_DIR}/game/util.cpp"
      "${CMAKE_SOURCE_DIR}/config.cpp"
      )
@@ -92,7 +91,6 @@ file(GLOB IMPL_FILES
      file(GLOB HDRS_FILES
      "${CMAKE_SOURCE_DIR}/game/game.h"
      "${CMAKE_SOURCE_DIR}/game/board.h"
-     "${CMAKE_SOURCE_DIR}/game/disk.h"
      "${CMAKE_SOURCE_DIR}/game/util.h"
      "${CMAKE_SOURCE_DIR}/config.h"
 )

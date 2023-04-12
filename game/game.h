@@ -8,10 +8,11 @@
 
 using std::string;
 using std::vector;
+using std::swap;
 
 class Game
 {
-    Board board;
+    Board* board;
     milliseconds startTimeMillis;
     Utilizable* util;
     int maxMinutesPlayTime;
@@ -19,11 +20,10 @@ class Game
     vector<int> movesTo;
     vector<int> movesDiskSize;
     void recordMove(int, int, int);
-    void calculateMove(int, int, int);
 
 public:
     void setUp(int);
-    Game(int, Utilizable*);
+    Game(Board* board, int, Utilizable*);
     Game(int);
     ~Game();
     int playWithScore(string, unsigned int);
