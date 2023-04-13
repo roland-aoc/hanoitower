@@ -48,21 +48,6 @@ include(GoogleTest)
 # SOURCE FILE LINKING
 ##############################################################################################################################
 
-# most of the times any compiling error "undefined reference" is due to missing files in scope by cmake, *.h approach will mostly only read one file
-file(GLOB IMPL_FILES
-     "${CMAKE_SOURCE_DIR}/game/game.cpp"
-     "${CMAKE_SOURCE_DIR}/game/board.cpp"
-     "${CMAKE_SOURCE_DIR}/game/util.cpp"
-     "${CMAKE_SOURCE_DIR}/config.cpp"
-)
-
-file(GLOB HDRS_FILES
-     "${CMAKE_SOURCE_DIR}/game/game.h"
-     "${CMAKE_SOURCE_DIR}/game/board.h"
-     "${CMAKE_SOURCE_DIR}/game/util.h"
-     "${CMAKE_SOURCE_DIR}/config.h"
-)
-
 target_sources(hanoitower_lib
      PRIVATE
           ${IMPL_FILES}

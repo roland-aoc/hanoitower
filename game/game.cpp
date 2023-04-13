@@ -6,25 +6,21 @@
 
 using std::invalid_argument;
 
-Game::Game(Board* board, int maxMinutesPlayTime, Utilizable* util) 
-    : board(board),
+Game::Game(up<Board>&& board, int maxMinutesPlayTime, up<Utilizable>&& util) 
+    : board(move(board)),
     maxMinutesPlayTime(maxMinutesPlayTime),
-    util(util)
+    util(move(util))
 {
 }
 
 Game::Game(int maxMinutesPlayTime)
-    : board(new Board),
+    : board(make_unique<Board>()),
     maxMinutesPlayTime(maxMinutesPlayTime),
-    util(new Util)
+    util(make_unique<Util>())
 {
 }
 
-Game::~Game()
-{
-}
-
-int Game::playWithScore(string name, unsigned int nDisks) {
+int Game::playWithScore(const string name, const unsigned int nDisks) {
     if (nDisks >10) {
         throw invalid_argument("Must be smaller than 10"); 
     }
@@ -53,7 +49,7 @@ int Game::playWithScore(string name, unsigned int nDisks) {
     } else {
         spdlog::get("logger")->error("Player {} has lost", name);
     }
-    return nMoves; //TODO RK change interface
+    return nMoves; 
 }
 
 void Game::setUp(int nDisks) {
@@ -67,6 +63,7 @@ bool Game::timeIsUp() {
 }
 
 void Game::recordMove(int from, int to, int diskSize) {
+    //TODO RK implement
     movesFrom.push_back(from);
     movesTo.push_back(to);
     movesDiskSize.push_back(diskSize);

@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <string>
 
 #include "../game/game.h"
 #include "../game/util.h"
@@ -15,21 +14,19 @@ using std::string;
 
 class GameTest : public ::testing::Test {
 protected:
-    Game* game = nullptr;
-    Board* board = nullptr;
+    up<Game> game = nullptr;
+    up<Board> board = nullptr;
 
     static void SetUpTestSuite() {
         config::LogManager::init();
     }
 
     void SetUp() override {
-        game = new Game(2);
-        board = new Board;
+        game = make_unique<Game>(2);
+        board = make_unique<Board>();
     }
 
     void TearDown() override {
-        delete game;
-        delete board;
     }
 };
 
@@ -50,7 +47,7 @@ TEST_F(GameTest, TimeIsUp) {
     int startMillis = 1;
     int maxMins = 5;
     int advancedMins = maxMins++;
-    game = new Game(new Board, maxMins, new UtilMock(startMillis, advancedMins * 60 * 10000));
+    game = make_unique<Game>(make_unique<Board>(), maxMins, make_unique<UtilMock>(startMillis, advancedMins * 60 * 10000));
     game->setUp(8);
     ASSERT_TRUE(game->timeIsUp());
 }

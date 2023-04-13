@@ -28,3 +28,24 @@ set(CMAKE_CXX_FLAGS "-g")
 set(CMAKE_CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "-Wpedantic")
 set(CMAKE_BUILD_PARALLEL_LEVEL 4) # This flag tells the build system to use X number of threads for the compilation process. This can greatly reduce the build time on multi-core systems.
+
+##############################################################################################################################
+# SOURCE FILES
+##############################################################################################################################
+# most of the times any compiling error "undefined reference" is due to missing files in scope by cmake, *.h approach will mostly only read one file
+file(GLOB IMPL_FILES
+     "${CMAKE_SOURCE_DIR}/game/game.cpp"
+     "${CMAKE_SOURCE_DIR}/game/board.cpp"
+     "${CMAKE_SOURCE_DIR}/game/disk.cpp"
+     "${CMAKE_SOURCE_DIR}/game/util.cpp"
+     "${CMAKE_SOURCE_DIR}/config.cpp"
+     )
+     
+     file(GLOB HDRS_FILES
+     "${CMAKE_SOURCE_DIR}/game/game.h"
+     "${CMAKE_SOURCE_DIR}/game/board.h"
+     "${CMAKE_SOURCE_DIR}/game/disk.h"
+     "${CMAKE_SOURCE_DIR}/game/util.h"
+     "${CMAKE_SOURCE_DIR}/game/rods.h"
+     "${CMAKE_SOURCE_DIR}/config.h"
+)

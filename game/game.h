@@ -6,15 +6,11 @@
 #include "board.h"
 #include "util.h"
 
-using std::string;
-using std::vector;
-using std::swap;
-
 class Game
 {
-    Board* board;
+    const up<Board> board;
     milliseconds startTimeMillis;
-    Utilizable* util;
+    const up<Utilizable> util;
     int maxMinutesPlayTime;
     vector<int> movesFrom;
     vector<int> movesTo;
@@ -22,11 +18,11 @@ class Game
     void recordMove(int, int, int);
 
 public:
-    void setUp(int);
-    Game(Board* board, int, Utilizable*);
+    Game(up<Board>&& board, int, up<Utilizable>&&);
     Game(int);
-    ~Game();
-    int playWithScore(string, unsigned int);
+    ~Game() = default;
+    void setUp(int);
+    int playWithScore(const string, const unsigned int);
     bool timeIsUp();
 };
 

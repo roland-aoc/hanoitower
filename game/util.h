@@ -10,7 +10,7 @@ using std::chrono::system_clock;
 class Utilizable
 {
 public:
-    virtual ~Utilizable() {};
+    virtual ~Utilizable() = default;
     virtual milliseconds logTime() = 0;
     virtual int randomTarget() = 0;
 };

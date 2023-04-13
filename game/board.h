@@ -3,25 +3,33 @@
 
 #include "spdlog/spdlog.h"
 
+#include "rods.h"
+
 #include <vector>
 #include <string>
 #include <stack>
+#include <memory>
 
-using std::vector;
 using std::string;
-using std::stack;
+using std::vector;
+using std::swap;
+using std::for_each;
+using std::move;
+using std::make_unique;
+
+template<typename T> using up = std::unique_ptr<T>;
 
 class Board
 {
-    vector<stack<int>> rods; 
+    const up<rods_t> rods; 
     string status;
     bool smallest;
 
 public:
-    Board(/* args */);
-    ~Board();
-    void move(int, int);
-    vector<stack<int>>& getRods();
+    Board(); 
+    ~Board() = default;
+    void move(const int, const int) const;
+    rods_t& getRods() const;
 };
 
 

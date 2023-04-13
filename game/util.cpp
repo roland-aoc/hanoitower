@@ -16,16 +16,13 @@ public:
         dis(0, 2)
     {}
 
-    ~Util() {}
-
     milliseconds logTime() override {
         return duration_cast<milliseconds> (system_clock::now().time_since_epoch());
     }
 
     int randomTarget() override {
         int choices[] = {1,2,3};
-        int random_choice = choices[dis(gen)];
-        return random_choice;
+        return choices[dis(gen)];
     }
 };
 
@@ -38,9 +35,6 @@ public:
     UtilMock(int firstMillis, int advancedMins)
         : firstMillis(firstMillis),
         advancedMins(advancedMins)
-    {}
-    
-    ~UtilMock()
     {}
     
     milliseconds logTime() override {
